@@ -1,15 +1,15 @@
 import React from 'react'
 import Head from 'next/head'
 
-import RocketseatLogo from '../assets/rocketseat.svg'
+import RocketseatLogo from '../assets/images/rocketseat.svg'
 
 import { Container } from '../styles/pages/Home'
 
-const Home: React.FC = () => {
+export default function Home() {
   return (
     <Container>
       <Head>
-        <title>Homepage</title>
+        <title>prisma.focus</title>
       </Head>
 
       <RocketseatLogo />
@@ -18,5 +18,3 @@ const Home: React.FC = () => {
     </Container>
   )
 }
-
-export default Home

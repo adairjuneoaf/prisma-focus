@@ -1,9 +1,15 @@
-const theme = {
+export const lightTheme = {
   colors: {
-    background: '#121214',
-    text: '#e1e1e6',
+    background: 'var(--background-white)',
+    text: '#121214',
     primary: '#8257e6'
   }
 }
 
-export default theme
+export const darkTheme = {
+  colors: {
+    background: 'var(--gray-dark)',
+    text: '#e1e1e6',
+    primary: '#8257e6'
+  }
+}
