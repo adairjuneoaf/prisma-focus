@@ -16,8 +16,8 @@ export default createGlobalStyle`
   --background-white: #F2F3F5;
   --gray-medium: #DCDDE0;
   --gray-dark: #666666;
-  --blue: #5965E0;
-  --blue-light: #4953B8;
+  --blue-light: #5965E0;
+  --blue: #4953B8;
   --blue-dark: #2E384D;
   --blue-purple-light: #B2B9FF;
   

@@ -18,13 +18,23 @@ export const Content = styled.div`
   align-items: center;
   gap: 6rem;
 
-  margin-top: 6.5rem;
-
   .sideLeft {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    height: 90vh;
   }
 
   .sideRight {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    height: 90vh;
   }
 `
