@@ -2,10 +2,20 @@ import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
 :root{
+  //LIGHT THEME
+  --background-light: #F2F3F5;
+  --text-light: #666666;
+  --color-primary-light: #DCDDE0;
+  
+  //DARK THEME
+  --background-dark: #121214;
+  --text-dark: #F2F3F5;
+  --color-primary-dark: #DCDDE0;
+
+  //OTHER COLORS
   --background-white: #F2F3F5;
   --gray-medium: #DCDDE0;
   --gray-dark: #666666;
-
   --blue: #5965E0;
   --blue-light: #4953B8;
   --blue-dark: #2E384D;

@@ -3,7 +3,7 @@ import { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 
 import GlobalStyle from '../styles/global'
-import { lightTheme, darkTheme } from '../styles/theme'
+import { lightTheme /*, darkTheme */ } from '../styles/theme'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (

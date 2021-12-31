@@ -1,20 +1,28 @@
 import React from 'react'
 import Head from 'next/head'
 
-import RocketseatLogo from '../assets/images/rocketseat.svg'
-
-import { Container } from '../styles/pages/Home'
+import { Container, Content } from '../styles/pages/Home'
+import ProgressBar from '../components/ProgressBar'
+import Profile from '../components/Profile'
 
 export default function Home() {
   return (
-    <Container>
+    <>
       <Head>
         <title>prisma.focus</title>
       </Head>
+      <Container>
+        <ProgressBar />
 
-      <RocketseatLogo />
-      <h1>ReactJS Structure</h1>
-      <p>A ReactJS + Next.js structure made by Rocketseat.</p>
-    </Container>
+        <Content>
+          <section className="sideLeft">
+            <Profile />
+          </section>
+          <section className="sideRight">
+            <Profile />
+          </section>
+        </Content>
+      </Container>
+    </>
   )
 }
