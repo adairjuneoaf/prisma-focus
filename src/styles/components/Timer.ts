@@ -63,7 +63,7 @@ export const Content = styled.div`
     }
   }
 
-  button {
+  button.activeCutdown {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,6 +88,80 @@ export const Content = styled.div`
     &:hover {
       background: var(--blue);
     }
+
+    > span {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  button.disableCutdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    gap: 0.5rem;
+
+    width: 100%;
+    height: 5rem;
+
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    border-radius: 5px;
+    background: #ffffff;
+    color: var(--gray-dark);
+
+    font-size: 20px;
+
+    svg {
+      path {
+        fill: var(--gray-dark);
+      }
+    }
+
+    transition: all 0.3s;
+
+    &:hover {
+      background: var(--red-light);
+      color: #ffffff;
+
+      svg {
+        path {
+          fill: #ffffff;
+        }
+      }
+    }
+
+    > span {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  button.cycleCompleted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    gap: 0.5rem;
+
+    width: 100%;
+    height: 5rem;
+
+    outline: none;
+    border: none;
+    border-bottom: 4px solid var(--green-light);
+    cursor: not-allowed;
+
+    border-radius: 5px;
+    background: #ffffff;
+    color: var(--gray-dark);
+
+    font-size: 20px;
 
     > span {
       display: flex;
