@@ -28,7 +28,7 @@ export const Content = styled.div`
 
       > span {
         height: 0.375rem;
-        width: 50%;
+        //width: 50%;
 
         background: var(--green-light);
 

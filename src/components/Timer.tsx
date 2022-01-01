@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+
 import { Content } from '../styles/components/Timer'
+import { ChallengesContext } from '../contexts/ChallengesContext'
 
 import ArrowInit from '../assets/svg/play_arrow.svg'
 import CloseCycle from '../assets/svg/close_cycle.svg'
@@ -8,6 +10,8 @@ import CheckCircle from '../assets/svg/check_circle.svg'
 let countdownTimeout: number
 
 export function Timer() {
+  const { startNewChallenge } = useContext(ChallengesContext)
+
   const [time, setTime] = useState(0.1 * 60)
   const [activeCountdown, setActiveCountdown] = useState(false)
   const [hasFinishedCountdown, setHasFinishedCountdown] = useState(false)
@@ -36,6 +40,7 @@ export function Timer() {
     } else if (activeCountdown && time === 0) {
       setHasFinishedCountdown(true)
       setActiveCountdown(false)
+      startNewChallenge()
     }
   }, [activeCountdown, time])
 

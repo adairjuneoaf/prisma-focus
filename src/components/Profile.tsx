@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Content } from '../styles/components/Profile'
 
 import LevelUpImg from '../assets/svg/arrow-up-level.svg'
+import { ChallengesContext } from '../contexts/ChallengesContext'
 
 export default function Profile() {
+  const { ChallengeCompleted } = useContext(ChallengesContext)
+
   return (
     <Content>
       <section className="profileUser">
@@ -25,7 +28,7 @@ export default function Profile() {
       <section className="challengesComplete">
         <div className="challengesCounter">
           <h3>Desafios completos</h3>
-          <h3>00</h3>
+          <h3>{ChallengeCompleted}</h3>
         </div>
       </section>
     </Content>

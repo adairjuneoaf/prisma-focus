@@ -1,32 +1,41 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Container, Content } from '../styles/components/Challenges'
 
 import ArrowNewChallenge from '../assets/svg/arrow_receive_challenge.svg'
-import Exercise01 from '../assets/svg/exercise_01.svg'
+import ExerciseBody from '../assets/svg/body.svg'
+import ExerciseEye from '../assets/svg/eye.svg'
+import { ChallengesContext } from '../contexts/ChallengesContext'
 
 export function Challenges() {
-  const challengeActive = true
+  const { ChallengeActive, resetChallengeFailed } = useContext(
+    ChallengesContext
+  )
 
   return (
     <Container>
       <Content>
-        {challengeActive ? (
+        {ChallengeActive ? (
           <section className="isChallengeActive">
-            <h3>Ganhe 400 xp</h3>
+            <h3>Ganhe {ChallengeActive.amount} xp</h3>
 
             <span className="divider"></span>
 
             <div className="challenge">
-              <Exercise01 />
+              {ChallengeActive.type === 'body' ? (
+                <ExerciseBody />
+              ) : (
+                <ExerciseEye />
+              )}
               <h1>Exercite-se</h1>
-              <p>
-                É agora Diegão, bora lá meu parça. Caminhe por 3 minutos e
-                estique suas pernas pra você ficar saudável.
-              </p>
+              <p>{ChallengeActive.description}</p>
             </div>
 
             <div className="buttonsChallenge">
-              <button className="failedChallenge" type="button">
+              <button
+                className="failedChallenge"
+                type="button"
+                onClick={resetChallengeFailed}
+              >
                 Falhei
               </button>
               <button className="successChallenge" type="button">
@@ -36,7 +45,9 @@ export function Challenges() {
           </section>
         ) : (
           <section className="notChallengeActive">
-            <h2>Inicie um ciclo para receber desafios a serem completados</h2>
+            <h2>
+              Inicie um ciclo e no fim receba desafios a serem completados
+            </h2>
 
             <div>
               <ArrowNewChallenge />
