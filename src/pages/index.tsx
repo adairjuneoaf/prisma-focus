@@ -7,6 +7,8 @@ import Profile from '../components/Profile'
 import { Timer } from '../components/Timer'
 import { Challenges } from '../components/Challenges'
 
+import { CountdownProvider } from '../contexts/CountdownContext'
+
 export default function Home() {
   return (
     <>
@@ -16,15 +18,17 @@ export default function Home() {
       <Container>
         <ProgressBar />
 
-        <Content>
-          <section className="sideLeft">
-            <Profile />
-            <Timer />
-          </section>
-          <section className="sideRight">
-            <Challenges />
-          </section>
-        </Content>
+        <CountdownProvider>
+          <Content>
+            <section className="sideLeft">
+              <Profile />
+              <Timer />
+            </section>
+            <section className="sideRight">
+              <Challenges />
+            </section>
+          </Content>
+        </CountdownProvider>
       </Container>
     </>
   )

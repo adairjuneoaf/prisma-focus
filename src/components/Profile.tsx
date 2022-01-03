@@ -5,7 +5,7 @@ import LevelUpImg from '../assets/svg/arrow-up-level.svg'
 import { ChallengesContext } from '../contexts/ChallengesContext'
 
 export default function Profile() {
-  const { ChallengeCompleted } = useContext(ChallengesContext)
+  const { ChallengeCompleted, Level } = useContext(ChallengesContext)
 
   return (
     <Content>
@@ -20,7 +20,7 @@ export default function Profile() {
           <h3>Adair Juneo</h3>
           <div className="levelProfile">
             <LevelUpImg />
-            <p>Level 1</p>
+            <p>Level {Level}</p>
           </div>
         </div>
       </section>

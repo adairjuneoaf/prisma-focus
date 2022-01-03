@@ -4,12 +4,28 @@ import { Container, Content } from '../styles/components/Challenges'
 import ArrowNewChallenge from '../assets/svg/arrow_receive_challenge.svg'
 import ExerciseBody from '../assets/svg/body.svg'
 import ExerciseEye from '../assets/svg/eye.svg'
+
 import { ChallengesContext } from '../contexts/ChallengesContext'
+import { CountdownContext } from '../contexts/CountdownContext'
 
 export function Challenges() {
-  const { ChallengeActive, resetChallengeFailed } = useContext(
-    ChallengesContext
-  )
+  const {
+    ChallengeActive,
+    resetChallengeFailed,
+    CurrentExpirienceAndLevelUp
+  } = useContext(ChallengesContext)
+
+  const { handleResetCutdown } = useContext(CountdownContext)
+
+  function handleChallengeFailed() {
+    handleResetCutdown()
+    resetChallengeFailed()
+  }
+
+  function handleChallengeSuccessed() {
+    handleResetCutdown()
+    CurrentExpirienceAndLevelUp()
+  }
 
   return (
     <Container>
@@ -34,11 +50,15 @@ export function Challenges() {
               <button
                 className="failedChallenge"
                 type="button"
-                onClick={resetChallengeFailed}
+                onClick={handleChallengeFailed}
               >
                 Falhei
               </button>
-              <button className="successChallenge" type="button">
+              <button
+                className="successChallenge"
+                type="button"
+                onClick={handleChallengeSuccessed}
+              >
                 Completei
               </button>
             </div>

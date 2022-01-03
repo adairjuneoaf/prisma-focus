@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useState } from 'react'
+import React, { createContext, ReactNode, useEffect, useState } from 'react'
 
 import challengesJSON from '../../challenges.json'
 
@@ -21,7 +21,7 @@ interface ChallengesContextProps {
   ChallengeActive: Challenge // VARIÁVEL ONDE É ARMAZENADO DESAFIO EXIBIDO EM TELA NO MOMENTO.
   resetChallengeFailed: () => void // FUNÇÃO RESPONSÁVEL POR RESETAR O BOX DE DESAFIOS CASO USUÁRIO FALHE O DESAFIO.
   experienceToNextLevel: number // VARIÁVEL ONDE É ARMAZENADO A QUANTIDADE DE EXPERIÊNCIA PARA O PRÓXIMO LEVEL.
-  CurrentExpirienceUp: () => void // FUNÇÃO RESPONSÁVEL POR EFETUAR OS CÁLCULOS DE UPGRADE DO LEVEL DE USUÁRIOS.
+  CurrentExpirienceAndLevelUp: () => void // FUNÇÃO RESPONSÁVEL POR EFETUAR OS CÁLCULOS DE UPGRADE DO LEVEL DE USUÁRIOS.
   ChallengeCompletedUp: () => void // FUNÇÃO RESPONSÁVEL POR MARCAR DESAFIOS COMO CONCLUÍDOS PELOS USUÁRIOS.
 }
 
@@ -33,18 +33,37 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
   const [ChallengeCompleted, setChallengeCompleted] = useState(0)
   const [ChallengeActive, setChallengeActive] = useState(null)
 
+  useEffect(() => {
+    Notification.requestPermission()
+  }, [])
+
   const experienceToNextLevel = Math.pow((Level + 1) * 5, 2)
 
   function LevelUp() {
     setLevel(Level + 1)
   }
 
-  function CurrentExpirienceUp() {
-    setCurrentExpirience(0)
+  function ChallengeCompletedUp() {
+    setChallengeCompleted(ChallengeCompleted + 1)
   }
 
-  function ChallengeCompletedUp() {
-    setChallengeCompleted(0)
+  function CurrentExpirienceAndLevelUp() {
+    if (!ChallengeActive) {
+      return 0
+    }
+
+    const { amount } = ChallengeActive
+
+    let finalExpirience = CurrentExpirience + amount
+
+    if (finalExpirience >= experienceToNextLevel) {
+      finalExpirience = finalExpirience - experienceToNextLevel
+      LevelUp()
+    }
+
+    setCurrentExpirience(finalExpirience)
+    setChallengeActive(null)
+    ChallengeCompletedUp()
   }
 
   function startNewChallenge() {
@@ -54,6 +73,15 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
     const challenge = challengesJSON[randomChallengeIndex]
 
     setChallengeActive(challenge)
+
+    if (Notification.permission === 'granted') {
+      // eslint-disable-next-line no-new
+      new Audio('/notification-happy-challenge.wav').play()
+      // eslint-disable-next-line no-new
+      new Notification('Novo desafio disponível!', {
+        body: `Valendo ${challenge.amount} xp!`
+      })
+    }
   }
 
   function resetChallengeFailed() {
@@ -71,7 +99,7 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
         ChallengeActive,
         resetChallengeFailed,
         experienceToNextLevel,
-        CurrentExpirienceUp,
+        CurrentExpirienceAndLevelUp,
         ChallengeCompletedUp
       }}
     >
