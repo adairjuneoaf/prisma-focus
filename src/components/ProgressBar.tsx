@@ -3,12 +3,12 @@ import { ChallengesContext } from '../contexts/ChallengesContext'
 import { Content } from '../styles/components/ProgressBar'
 
 export default function ProgressBar() {
-  const { CurrentExpirience, experienceToNextLevel } = useContext(
+  const { CurrentExperience, experienceToNextLevel } = useContext(
     ChallengesContext
   )
 
   const percentToNextLevel =
-    Math.round(CurrentExpirience * 100) / experienceToNextLevel
+    Math.round(CurrentExperience * 100) / experienceToNextLevel
 
   return (
     <Content>
