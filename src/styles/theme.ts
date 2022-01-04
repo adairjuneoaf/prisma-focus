@@ -1,15 +1,15 @@
 export const lightTheme = {
   colors: {
-    background: 'var(--background-light)',
-    text: 'var(--text-light)',
-    primary: 'var(--color-primary-light)'
+    background: '#F2F3F5',
+    text: '#474747',
+    primary: '#bababa'
   }
 }
 
 export const darkTheme = {
   colors: {
-    background: 'var(--background-dark)',
-    text: 'var(--text-dark)',
-    primary: 'var(--color-primary-dark)'
+    background: '#474747',
+    text: '#FFFFFF',
+    primary: '#bababa'
   }
 }

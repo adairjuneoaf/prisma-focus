@@ -46,6 +46,29 @@ export const Content = styled.div`
         }
       }
     }
+
+    .chooseTheme {
+      button {
+        width: fit-content;
+        height: 32px;
+
+        color: var(--background-white);
+        background: var(--blue-light);
+
+        font-size: 1rem;
+        border: 0;
+        outline: none;
+
+        border-radius: 9999px;
+        padding: 0rem 1rem;
+
+        transition: background-color 0.3s;
+
+        &:hover {
+          background: var(--blue);
+        }
+      }
+    }
   }
 
   .challengesComplete {

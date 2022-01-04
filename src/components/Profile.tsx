@@ -4,7 +4,11 @@ import { Content } from '../styles/components/Profile'
 import LevelUpImg from '../assets/svg/arrow-up-level.svg'
 import { ChallengesContext } from '../contexts/ChallengesContext'
 
-export default function Profile() {
+interface ThemeProps {
+  ThemeSelector: () => void
+}
+
+export default function Profile({ ThemeSelector }: ThemeProps) {
   const { ChallengeCompleted, Level } = useContext(ChallengesContext)
 
   return (
@@ -22,6 +26,15 @@ export default function Profile() {
             <LevelUpImg />
             <p>Level {Level}</p>
           </div>
+        </div>
+        <div className="chooseTheme">
+          <button
+            type="button"
+            onClick={ThemeSelector}
+            title="Alterar entre tema Dark/Light do App"
+          >
+            Mudar o tema
+          </button>
         </div>
       </section>
 

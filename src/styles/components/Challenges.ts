@@ -30,6 +30,7 @@ export const Content = styled.div`
     > h2 {
       text-align: center;
       line-height: 1.4;
+      color: var(--gray-dark);
     }
 
     > div {
@@ -42,6 +43,7 @@ export const Content = styled.div`
       p {
         text-align: center;
         line-height: 1.4;
+        color: var(--gray-dark);
       }
     }
   }
